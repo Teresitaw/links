@@ -1,0 +1,122 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+	background-image: url(./imagenes/bowser.jpeg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	/*solucion del error de difuminado mal puesto*/
+	/* min-height: 100vh; */
+
+	&::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: rgba(255, 255, 255, 0.532);
+		position: fixed; /*solucion del error de difuminado mal puesto estaba en absolute, y era fixed*/
+		top: 0;
+		left: 0;
+		backdrop-filter: blur(50px);
+		z-index: 0;
+	}
+}
+.contenedor {
+	position: relative; /*permite que se encimen las cosas y el z-index 1 como es mayor que el cero del fondo, hace que esté por encima*/
+	z-index: 1;
+	/* background: #ccc; este fondo nos ayuda a ir viendo cómo va quedando el show*/
+	width: 90%;
+	max-width: 700px;
+	margin: auto;
+	padding: 40px 0;
+
+	.bio {
+		text-align: center;
+		margin-bottom: 40px;
+
+		.foto {
+			width: 150px;
+			height: auto; /*gracias a que pusimos el alto automático podemos trabajar con la propiedad de aspect-ratio */
+			aspect-ratio: 1/1;
+			object-fit: cover;
+			object-position: top;
+			border-radius: 50%;
+			margin-bottom: 20px;
+		}
+
+		.nombre {
+			margin-bottom: 5px;
+			font-size: 32px;
+		}
+
+		.descripcion {
+			font-size: 18px;
+		}
+	}
+	.links {
+		.link {
+			color: black;
+			border: 3px solid black;
+			border-radius: 10px;
+			text-align: center;
+			display: block;
+			margin-bottom: 20px;
+			text-decoration: none;
+			padding: 20px;
+			text-transform: uppercase;
+			font-weight: 700;
+			transition: 0.3s ease all;
+			/*box-shadow: desplazamiento a la derecha, desplazamiento a la izquierda, blur desenfoque, spred */
+			box-shadow: 1px 1px 0px 0px #000000, 2px 2px 0px 0px #000000, 3px 3px 0px 0px black, 4px 4px 0px 0px black,
+				5px 5px 0px 0px black;
+			transform: translate(-5px, -5px);
+
+			&:hover {
+				color: white;
+				box-shadow: 0px 0px 0px 0px;
+				transform: translate(0px, 0px);
+			}
+
+			&.sitio {
+				&:hover {
+					background: rgb(0, 191, 255);
+				}
+			}
+			&.youtube {
+				&:hover {
+					background: red;
+				}
+			}
+			&.tiktok {
+				&:hover {
+					background: rgb(0, 0, 0);
+				}
+			}
+			&.twitch {
+				&:hover {
+					background: #6441a5;
+				}
+			}
+			&.insta {
+				&:hover {
+					background: rgb(5, 10, 230);
+					background: linear-gradient(
+						52deg,
+						rgba(91, 81, 216, 1) 0%,
+						rgba(131, 58, 180, 1) 15%,
+						rgba(193, 53, 132, 1) 30%,
+						rgba(225, 48, 108, 1) 45%,
+						rgba(253, 29, 29, 1) 55%,
+						rgba(245, 96, 64, 1) 70%,
+						rgba(252, 175, 69, 1) 85%,
+						rgba(255, 220, 128, 1) 100%
+					);
+				}
+			}
+		}
+	}
+}
